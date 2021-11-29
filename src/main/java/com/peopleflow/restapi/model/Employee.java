@@ -24,7 +24,7 @@ public class Employee {
 
     private String emailAddress;
 
-    private EmployeeState employeeState;
+    private String employeeState;
 
     public Employee(CreateEmployeeRequest employeeRequest) {
 
@@ -87,11 +87,11 @@ public class Employee {
         this.emailAddress = emailAddress;
     }
 
-    public EmployeeState getEmployeeState() {
+    public String getEmployeeState() {
         return employeeState;
     }
 
-    public void setEmployeeState(EmployeeState employeeState) {
+    public void setEmployeeState(String employeeState) {
         this.employeeState = employeeState;
     }
 }

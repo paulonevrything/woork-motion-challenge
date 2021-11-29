@@ -9,6 +9,6 @@ public interface EmployeeService {
 
     public ResponseEntity<CreateEmployeeResponse> createEmployee(CreateEmployeeRequest request);
 
-    public ResponseEntity<Response> updateEmployeeState(UpdateEmployeeStateRequest request);
+    public ResponseEntity<Response> updateEmployeeState(UpdateEmployeeStateRequest request, Long employeeId);
 
 }

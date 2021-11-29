@@ -9,25 +9,14 @@ public class UpdateEmployeeStateRequest {
 
     @NotBlank
     @NotNull
-    private Long employeeId;
+    private String employeeState;
 
-    @NotBlank
-    @NotNull
-    private EmployeeState employeeState;
+    public String getEmployeeState() {
 
-    public Long getEmployeeId() {
-        return employeeId;
+        return this.employeeState;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public EmployeeState getEmployeeState() {
-        return employeeState;
-    }
-
-    public void setEmployeeState(EmployeeState employeeState) {
-        this.employeeState = employeeState;
+    public void setEmployeeState(String employeeState) {
+        this.employeeState = toString();
     }
 }

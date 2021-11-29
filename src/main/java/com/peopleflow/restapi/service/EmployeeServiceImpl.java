@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
 
             Employee newEmployee = new Employee(request);
-            newEmployee.setEmployeeState(EmployeeState.ADDED);
+            newEmployee.setEmployeeState(EmployeeState.ADDED.toString());
 
             Employee result = this.employeeRepository.save(newEmployee);
 
@@ -62,25 +62,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<Response> updateEmployeeState(UpdateEmployeeStateRequest request) {
+    public ResponseEntity<Response> updateEmployeeState(UpdateEmployeeStateRequest request, Long employeeId) {
 
         CreateEmployeeResponse response = new CreateEmployeeResponse();
 
         try {
 
             // verify employee exist
-            Employee employeeToUpdate = getEmployeeById(request.getEmployeeId());
+            Employee employeeToUpdate = getEmployeeById(employeeId);
 
             // verify state change is valid
-            if(!stateChangeIsValid(employeeToUpdate.getEmployeeState(), request.getEmployeeState())) {
+            EmployeeState employeeState = EmployeeState.enumValue(employeeToUpdate.getEmployeeState());
+            EmployeeState requestedState = EmployeeState.enumValue(request.getEmployeeState());
 
-                throw new StateUpdateException("The requested state change is not valid. New state must be higher than previous state");
+            if(employeeState == null || requestedState == null || !stateChangeIsValid(employeeState, requestedState)) {
+
+                throw new StateUpdateException();
             }
 
             employeeToUpdate.setEmployeeState(request.getEmployeeState());
             employeeRepository.save(employeeToUpdate);
 
             response.setResponse(CustomResponse.SUCCESS);
+            response.setEmployee(employeeToUpdate);
             return new ResponseEntity<>(response, HttpStatus.OK);
 
         } catch (Exception exception) {
@@ -112,7 +116,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(employeeId);
 
         if (!employee.isPresent()) {
-            throw new EmployeeNotFoundException("Employee is not found");
+            throw new EmployeeNotFoundException();
         }
 
         return employee.get();
