@@ -17,6 +17,6 @@ public class UpdateEmployeeStateRequest {
     }
 
     public void setEmployeeState(String employeeState) {
-        this.employeeState = toString();
+        this.employeeState = employeeState;
     }
 }
