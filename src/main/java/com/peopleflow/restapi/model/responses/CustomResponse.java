@@ -2,7 +2,8 @@ package com.peopleflow.restapi.model.responses;
 
 public enum CustomResponse {
 
-    SUCCESS("SUCCESS",0);
+    SUCCESS("Success",0),
+    UNABLE_TO_EXECUTE_REQUEST("Unable to execute request",-1);
 
     private final String message;
     private final int code;

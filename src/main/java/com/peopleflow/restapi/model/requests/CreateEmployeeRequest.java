@@ -1,5 +1,7 @@
 package com.peopleflow.restapi.model.requests;
 
+import com.peopleflow.restapi.model.Employee;
+
 public class CreateEmployeeRequest {
 
     private String firstName;
@@ -11,6 +13,14 @@ public class CreateEmployeeRequest {
     private String gender;
 
     private String emailAddress;
+
+    public CreateEmployeeRequest(Employee employee) {
+
+        this.firstName = employee.getFirstName();
+        this.lastName = employee.getLastName();
+        this.gender = employee.getGender();
+        this.emailAddress = employee.getEmailAddress();
+    }
 
     public String getFirstName() {
         return firstName;

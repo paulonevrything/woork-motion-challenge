@@ -24,11 +24,6 @@ public class Response {
 
     public Response(){}
 
-    public Response(CustomResponse response){
-        message = response.getMessage();
-        responseCode = response.getCode();
-    }
-
     public void setResponse(CustomResponse response){
         this.message = response.getMessage();
         this.responseCode = response.getCode();

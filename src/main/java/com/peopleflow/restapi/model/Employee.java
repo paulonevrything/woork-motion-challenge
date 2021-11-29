@@ -1,5 +1,7 @@
 package com.peopleflow.restapi.model;
 
+import com.peopleflow.restapi.model.requests.CreateEmployeeRequest;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +23,15 @@ public class Employee {
     private String gender;
 
     private String emailAddress;
+
+    public Employee(CreateEmployeeRequest employeeRequest) {
+
+        this.firstName = employeeRequest.getFirstName();
+        this.age = employeeRequest.getAge();
+        this.lastName = employeeRequest.getLastName();
+        this.emailAddress = employeeRequest.getEmailAddress();
+        this.gender = employeeRequest.getGender();
+    }
 
     public Long getEmployeeId() {
         return employeeId;
