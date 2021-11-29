@@ -95,7 +95,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                 response.setMessage(exception.getMessage());
                 response.setResponseCode(CustomResponse.UNABLE_TO_EXECUTE_REQUEST.getCode());
-                return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 
             }else if(exception instanceof EmployeeNotFoundException) {
 

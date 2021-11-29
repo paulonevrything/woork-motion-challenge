@@ -1,5 +1,6 @@
 package com.peopleflow.restapi.model.requests;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +24,7 @@ public class CreateEmployeeRequest {
 
     @NotBlank
     @NotNull
+    @Email
     private String emailAddress;
 
     public String getFirstName() {

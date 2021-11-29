@@ -22,6 +22,9 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponses(value = {
