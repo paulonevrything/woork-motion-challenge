@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "Employees")
 public class Employee {
 
     @Id
@@ -24,6 +24,8 @@ public class Employee {
 
     private String emailAddress;
 
+    private EmployeeState employeeState;
+
     public Employee(CreateEmployeeRequest employeeRequest) {
 
         this.firstName = employeeRequest.getFirstName();
@@ -31,6 +33,10 @@ public class Employee {
         this.lastName = employeeRequest.getLastName();
         this.emailAddress = employeeRequest.getEmailAddress();
         this.gender = employeeRequest.getGender();
+    }
+
+    public Employee() {
+
     }
 
     public Long getEmployeeId() {
@@ -79,5 +85,13 @@ public class Employee {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public EmployeeState getEmployeeState() {
+        return employeeState;
+    }
+
+    public void setEmployeeState(EmployeeState employeeState) {
+        this.employeeState = employeeState;
     }
 }

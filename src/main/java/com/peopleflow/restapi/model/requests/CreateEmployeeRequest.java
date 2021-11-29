@@ -1,26 +1,29 @@
 package com.peopleflow.restapi.model.requests;
 
-import com.peopleflow.restapi.model.Employee;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CreateEmployeeRequest {
 
+    @NotBlank
+    @NotNull
     private String firstName;
 
+    @NotBlank
+    @NotNull
     private String lastName;
 
+    @NotBlank
+    @NotNull
     private int age;
 
+    @NotBlank
+    @NotNull
     private String gender;
 
+    @NotBlank
+    @NotNull
     private String emailAddress;
-
-    public CreateEmployeeRequest(Employee employee) {
-
-        this.firstName = employee.getFirstName();
-        this.lastName = employee.getLastName();
-        this.gender = employee.getGender();
-        this.emailAddress = employee.getEmailAddress();
-    }
 
     public String getFirstName() {
         return firstName;
